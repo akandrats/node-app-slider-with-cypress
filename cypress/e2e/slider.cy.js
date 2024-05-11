@@ -16,3 +16,50 @@ describe('Swiper Gallery Test', function () {
     cy.get('.swiper-slide-active').should('contain', 'Paris');
   });
 });
+
+describe('Swiper Gallery Test', function () {
+  it('Checks if user can swap the slides', function () {
+	cy.visit('http://localhost:3000');
+	cy.get('.swiper-button-next').click();
+    cy.wait(2000);
+	cy.get('.swiper-slide-active').should('be.visible');
+	cy.get('.swiper-button-prev').click();
+    cy.wait(2000);
+	cy.get('.swiper-slide-active').should('be.visible');
+  });
+})
+
+describe('Swiper Gallery Test', function () {
+	it('Checks if user can swap the slides using force', function () {
+	  cy.visit('http://localhost:3000');
+	  cy.get('.swiper-button-next').click({ force: true });
+	  cy.wait(2000);
+	  cy.get('.swiper-slide-active').should('be.visible');
+	  cy.get('.swiper-button-prev').click({ force: true });
+	  cy.wait(2000);
+	  cy.get('.swiper-slide-active').should('be.visible');
+	});
+  })
+
+  describe('Swiper Gallery Test', function () {
+	it('Checks if slides contains correct info', function () {
+	  cy.visit('http://localhost:3000');
+	  cy.get('.swiper-button-next').click();
+	  cy.wait(2000);
+
+	  cy.get('.swiper-slide-active').should('contain', 'United Kingdom');
+	  cy.get('.swiper-slide-active').should('contain', 'London');
+
+	  cy.get('.swiper-button-next').click();
+	  cy.wait(2000);
+
+	  cy.get('.swiper-slide-active').should('contain', 'Paris');
+	  cy.get('.swiper-slide-active').should('contain', 'France');
+
+	  cy.get('.swiper-button-next').click();
+	  cy.wait(2000);
+
+	  cy.get('.swiper-slide-active').should('contain', 'Rome');
+	  cy.get('.swiper-slide-active').should('contain', 'Italy');
+	});
+  })
